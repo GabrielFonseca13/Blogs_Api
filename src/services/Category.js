@@ -15,6 +15,17 @@ const createCategorie = async ({ name }) => {
   return newCategory;
 };
 
+const getAllCategories = async () => {
+  const allCategories = await Category.findAll(
+    {
+      order: [['id', 'ASC']],
+    },
+  );
+
+  return allCategories;
+};
+
 module.exports = {
   createCategorie,
+  getAllCategories,
 };

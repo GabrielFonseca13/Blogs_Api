@@ -30,7 +30,7 @@ const getAllUsers = async () => {
       attributes: { exclude: ['password'] },
     },
   );
-
+  
   return allUsers;
 };
 
