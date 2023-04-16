@@ -12,11 +12,19 @@ const generateToken = (payload) => {
   return token;
 };
 
-// const validateToken = (token) => {
-//   if (!token) throw 'Falta o token';
-//   const isValid = jwt.verify(token, secretKey);
-//   return isValid;
-// }
+const validateToken = (token) => {
+  if (!token) {
+    return { 
+      error: {
+        code: 'tokenNotFound',
+        message: 'Token not found', 
+      }, 
+    };
+  }
+
+  const isValid = jwt.verify(token, secretKey);
+  return isValid;
+};
 
 // const decodeToken = (token) => {
 //   if (!token) throw 'Falta o token';
@@ -26,6 +34,6 @@ const generateToken = (payload) => {
 
 module.exports = {
   generateToken,
-  // validateToken,
+  validateToken,
   // decodeToken
 };

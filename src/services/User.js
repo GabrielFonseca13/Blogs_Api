@@ -2,7 +2,6 @@ const { User } = require('../models');
 const { generateToken } = require('./utils/auth');
 
 const createNewUser = async ({ displayName, email, password, image }) => {
-  //  validar se já nao existe um email.
   const userExists = await User.findOne({ where: { email } });
   if (userExists) {
     return {
@@ -25,6 +24,17 @@ const createNewUser = async ({ displayName, email, password, image }) => {
   return { token };
 };
 
+const getAllUsers = async () => {
+  const allUsers = await User.findAll(
+    {
+      attributes: { exclude: ['password'] },
+    },
+  );
+
+  return allUsers;
+};
+
 module.exports = {
   createNewUser,
+  getAllUsers,
 };

@@ -12,10 +12,17 @@ const createNewUser = async (req, res) => {
   if (serviceError && serviceError.code === 'usernameExists') {
     return res.status(409).json({ message: serviceError.message });
   }
-  
+
   return res.status(201).json({ token });
+};
+
+const getAllUsers = async (_req, res) => {
+  const allUsers = await UserService.getAllUsers();
+
+  return res.status(200).json(allUsers);
 };
 
 module.exports = {
   createNewUser,
+  getAllUsers,
 };
