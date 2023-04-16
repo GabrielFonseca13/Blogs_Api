@@ -48,7 +48,6 @@ const getUserById = async (id) => {
       },
     };
   }
-  console.log('###########################', userById.dataValues);
   return userById.dataValues;
 };
 

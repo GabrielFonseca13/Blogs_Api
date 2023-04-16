@@ -29,7 +29,6 @@ const getUserById = async (req, res) => {
   if (userById.error && userById.error.code === 'userNotFound') {
     return res.status(404).json({ message: userById.error.message });
   }
-  console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@', userById);
   return res.status(200).json(userById);
 };
 
