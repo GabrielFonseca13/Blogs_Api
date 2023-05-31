@@ -15,10 +15,8 @@ const generateToken = (payload) => {
 const validateToken = (token) => {
   if (!token) {
     return { 
-      error: {
-        code: 'tokenNotFound',
+        status: 401,
         message: 'Token not found', 
-      }, 
     };
   }
 

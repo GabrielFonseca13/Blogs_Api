@@ -1,11 +1,9 @@
-'use strict';
-
-const sequelize = require("sequelize");
+const sequelize = require('sequelize');
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
      await queryInterface.createTable('posts_categories', {
-      post_id:{
+      post_id: {
         type: sequelize.INTEGER,
         primaryKey: true,
         references: {
@@ -15,7 +13,7 @@ module.exports = {
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
         },
-      category_id:{
+      category_id: {
         type: sequelize.INTEGER,
         primaryKey: true,
         references: {
@@ -24,11 +22,11 @@ module.exports = {
         },
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
-      }
+      },
      });
   },
 
   down: async (queryInterface, Sequelize) => {
     await queryInterface.dropTable('posts_categories');
-  }
+  },
 };
